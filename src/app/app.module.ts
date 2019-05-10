@@ -23,8 +23,8 @@ import { BananaComponent } from './banana/banana.component';
     RouterModule.forRoot(AppRoutes),
     StoreModule.forRoot(reducers, {initialState}),
     EffectsModule.forRoot(effects),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25
+    StoreDevtoolsModule.instrument({     // Required for ReduxDevTools
+      maxAge: 25                         // Track history for 25 actions
     })
   ],
   declarations: [ 

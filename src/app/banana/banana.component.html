@@ -5,14 +5,20 @@
     <h1>
       {{ title }}!
     </h1>
+    <!-- Use async pipe to bind to the banana$ observable in the banana component
+         This creates a subscription so our page will immediately reflect any 
+         changes to the state of our banana. Using with ngIf prevents the elements
+         within from rendering until we have a banana. -->
     <div *ngIf = "banana$ | async as banana">
+      <!-- Set up buttons. Click will call functions that dispatch our actions. -->
       <form>
         <button class="local-button-border" type="submit" (click)="newBanana()">New Banana</button>
         <button class="local-button-border" type="submit" (click)="peelBanana()">Peel Banana</button>
         <button class="local-button-border" type="submit" (click)="eatBanana()">Eat Banana</button>
         <button class="local-button-border" type="submit" (click)="timeHop()">Time Hop</button>
       </form>
-
+      <!-- Change the image of our banana based on the current state. 
+           This logic could be more robust. -->
       <div style="height: 30px"></div>
       <div *ngIf="!banana.isPeeled && banana.color === 'yellow'">
         <a href='https://photos.google.com/share/AF1QipNVMZzrsLqAcVe9cNMXYsl4DeVvNK1NnkZWGdjXPCgoQwp9do4Zb6iwEM0xoE44kg?key=b2dsMjdvV0V0UUtrRzBQb2lCM0VCZEtmLXRnV2tR&source=ctrlq.org'><img width="300" alt="New Banana" src='https://lh3.googleusercontent.com/ZVIR5v6FgIvBtGQJRFARKkThwgINPIYhQC4_LJ8iQfEfy-kPgmHBkMviL5jSrj0Rr9eUJxGhhJNRFx9aoqPq0XfxA0yL3uerAOs6tENzS5YrW7LCuGf6Jq5AOLMxwc-60iU9QTieug=w2400' /></a>
@@ -55,6 +61,7 @@
         <a href='https://photos.google.com/share/AF1QipMYV6facdvJM72ZRmtceqiFKuyDawrL82uMv-qCXhG3mp99dFU9AJomVHn32aARFQ?key=TklkMlVTVV9FQ1Y2cWU5V21UQkJWRTM4WW9CYnNn&source=ctrlq.org'><img width="300" alt="Old Empty Banana Peel" src='https://lh3.googleusercontent.com/RLLQRn3Hv2hlksl_GjeeqdeQe1AtuKmfxTKR2iG4Sm0fDNwzMPOS1iy5pUgpT21WTGi0UwfnUtuuGjRt6WG0tl7UxsA0TtuaqgsG2PPXxvTWGmiHpX2gRY1DRli944sSabKj03RHww=w2400' /></a>
         <h2>Time to get a new banana</h2>
       </div>
+      <!-- Text display of what our state looks like -->
       <mat-card style="margin-top: 50px">
         <mat-card-content>
           <div style="text-align:left; font-family: Arial">
